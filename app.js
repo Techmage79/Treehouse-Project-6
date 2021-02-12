@@ -36,7 +36,7 @@ function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i += 1) {
     let li = document.createElement('li');
     let ul = document.getElementById('phrase');
-    li.textContent = arr[i]
+    li.textContent = arr[i].toLowerCase();
     ul.appendChild(li);
     if (li.textContent === ' ') {
       li.className = 'space';
@@ -53,9 +53,9 @@ function checkLetter(btn) {
   const keyBoardLetters = document.querySelectorAll('li');
   let match = null;
   for (let i = 0; i < keyBoardLetters.length; i ++){
-    if (keyBoardLetters[i] === btn.textContent) {
-      li.className.add = 'show';
-      let match = btn.textContent;
+    if (keyBoardLetters[i].textContent === btn) {
+      keyBoardLetters[i].classList.add('show');
+      match = btn;
     }
   }
     return match;
