@@ -60,3 +60,12 @@ function checkLetter(btn) {
   }
     return match;
 }
+
+//add an addEventListener to the keyboard
+qwerty.addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON') {
+    e.target.classList.add('chosen');
+    e.target.disabled = true;
+    const yesLetter = checkLetter(e.target);
+  }
+});
