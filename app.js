@@ -51,9 +51,10 @@ addPhraseToDisplay(phraseArray);
 //Create a checkletter function
 function checkLetter(btn) {
   const keyBoardLetters = document.querySelectorAll('li');
+
   let match = null;
   for (let i = 0; i < keyBoardLetters.length; i ++){
-    if (keyBoardLetters[i].textContent === btn) {
+    if (keyBoardLetters[i] === btn.textContent) {
       keyBoardLetters[i].classList.add('show');
       match = btn;
     }
