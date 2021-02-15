@@ -2,7 +2,7 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const btnReset = document.getElementsByClassName('btn__reset')[0];
-const missed = 0;
+let missed = 0;
 
 const phrases = [
   'Lord of the Rings',
@@ -52,13 +52,13 @@ function checkLetter(btn) {
   const keyBoardLetters = document.querySelectorAll('li');
 
   let match = null;
-  for (let i = 0; i < keyBoardLetters.length; i ++){
+  for (let i = 0; i < keyBoardLetters.length; i++) {
     if (keyBoardLetters[i].textContent === btn.textContent) {
       keyBoardLetters[i].classList.add('show');
       match = btn;
     }
   }
-    return match;
+  return match;
 }
 
 //add an addEventListener to the keyboard
@@ -69,21 +69,22 @@ qwerty.addEventListener('click', e => {
     e.target.disabled = true;
     const correctLetter = checkLetter(e.target);
     if (correctLetter === null) {
-    const scoreBoard = document.getElementById('scoreboard');
-    const ol = scoreBoard.firstElementChild;
-    const li = ol.firstElementChild;
-    ol.removeChild(li);
+      const hearts = document.querySelectorAll('#scoreboard img');
+      hearts[missed].src = 'images/lostHeart.png';
+      missed++;
     }
+    checkWin();
   }
+
   function checkWin() {
     const letter = document.querySelectorAll('.letter');
     const show = document.querySelectorAll('.show');
-    const winOverlay = overlay.classList.add('win');
-    const winner = document.querySelectorAll('.title');
-    if(letter.length === show.length) {
-      winner.document.innerHTML = 'Winner Winner Winner!';
-      overlay.style.display = 'none';
-      winOverlay.style.display = 'flex';
+    const title = document.querySelector('.title');
+    if (letter.length === show.length) {
+      title.innerHTML = 'Winner Winner Winner!';
+      overlay.classList.add('win');
+      overlay.style.display = 'flex';
+    } 
     }
   };
 });
