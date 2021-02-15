@@ -54,7 +54,7 @@ function checkLetter(btn) {
 
   let match = null;
   for (let i = 0; i < keyBoardLetters.length; i ++){
-    if (keyBoardLetters[i] === btn.textContent) {
+    if (keyBoardLetters[i].textContent === btn.textContent) {
       keyBoardLetters[i].classList.add('show');
       match = btn;
     }
@@ -67,6 +67,22 @@ qwerty.addEventListener('click', e => {
   if (e.target.tagName === 'BUTTON') {
     e.target.classList.add('chosen');
     e.target.disabled = true;
-    const yesLetter = checkLetter(e.target);
+    const correctLetter = checkLetter(e.target);
+    if (correctLetter === null) {
+    const scoreBoard = document.getElementById('scoreboard');
+    const ol = scoreBoard.firstElementChild;
+    const li = ol.firstElementChild;
+    ol.removeChild(li);
+    }
   }
 });
+
+const letter = document.getElementsByClassName('letter');
+const show = document.getElementsByClassName('show');
+if (letter.length === show.length) {
+  overlay.classList.add('win');
+  const youWon = 'Congratulations You Won the Game!'
+  const title = document.getElementsByClassName('title').innerHTML = youWon;
+  const win = document.getElementsByClassName('win');
+  win.style.display = 'flex';
+}
