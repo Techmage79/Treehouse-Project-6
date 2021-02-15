@@ -14,11 +14,10 @@ const phrases = [
   'Splash'
 ];
 
-
+const overlay = document.getElementById('overlay');
 
 //Hide overlay on start screen
 btnReset.addEventListener('click', () => {
-  const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
 });
 
@@ -63,6 +62,7 @@ function checkLetter(btn) {
 }
 
 //add an addEventListener to the keyboard
+
 qwerty.addEventListener('click', e => {
   if (e.target.tagName === 'BUTTON') {
     e.target.classList.add('chosen');
@@ -75,14 +75,15 @@ qwerty.addEventListener('click', e => {
     ol.removeChild(li);
     }
   }
+  function checkWin() {
+    const letter = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
+    const winOverlay = overlay.classList.add('win');
+    const winner = document.querySelectorAll('.title');
+    if(letter.length === show.length) {
+      winner.document.innerHTML = 'Winner Winner Winner!';
+      overlay.style.display = 'none';
+      winOverlay.style.display = 'flex';
+    }
+  };
 });
-
-const letter = document.getElementsByClassName('letter');
-const show = document.getElementsByClassName('show');
-if (letter.length === show.length) {
-  overlay.classList.add('win');
-  const youWon = 'Congratulations You Won the Game!'
-  const title = document.getElementsByClassName('title').innerHTML = youWon;
-  const win = document.getElementsByClassName('win');
-  win.style.display = 'flex';
-}
