@@ -1,6 +1,6 @@
 //Global Variables
 const qwerty = document.getElementById('qwerty');
-const phrase = document.getElementById('phrase');
+const phrase = document.querySelector('#phrase ul');
 const btnReset = document.getElementsByClassName('btn__reset')[0];
 let missed = 0;
 
@@ -15,6 +15,14 @@ const phrases = [
 ];
 
 const overlay = document.getElementById('overlay');
+
+// add reset BUTTON
+function gameRestart() {
+  getRandomPhrase(phrases);
+  addPhraseToDisplay(phraseArray);
+  
+
+}
 
 //Hide overlay on start screen
 btnReset.addEventListener('click', () => {
@@ -34,9 +42,8 @@ getRandomPhrase(phrases);
 function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i += 1) {
     let li = document.createElement('li');
-    let ul = document.getElementById('phrase');
     li.textContent = arr[i].toLowerCase();
-    ul.appendChild(li);
+    phrase.appendChild(li);
     if (li.textContent === ' ') {
       li.className = 'space';
     } else {
@@ -75,7 +82,7 @@ qwerty.addEventListener('click', e => {
     }
     checkWin();
   }
-
+// add checkWin funcion
   function checkWin() {
     const letter = document.querySelectorAll('.letter');
     const show = document.querySelectorAll('.show');
@@ -84,11 +91,15 @@ qwerty.addEventListener('click', e => {
       title.innerHTML = 'Winner Winner Winner!';
       overlay.classList.add('win');
       overlay.style.display = 'flex';
+      btnReset.innerHTML = 'Play Again';
+      btnReset.addEventListener('click', gameRestart);
     } else {
       if (missed >= 5) {
         title.innerHTML = 'Whomp Whomp Whomp sorry you lost.';
         overlay.classList.add('lose');
         overlay.style.display = 'flex';
+        btnReset.innerHTML = 'Play Again';
+        btnReset.addEventListener('click', gameRestart);
 
       }
     }
