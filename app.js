@@ -16,13 +16,13 @@ const phrases = [
 
 const overlay = document.getElementById('overlay');
 
-// add reset BUTTON
-function gameRestart() {
-  getRandomPhrase(phrases);
-  addPhraseToDisplay(phraseArray);
-  
-
-}
+// // add reset BUTTON
+// function gameRestart() {
+//   getRandomPhrase(phrases);
+//   addPhraseToDisplay(phraseArray);
+//
+//
+// }
 
 //Hide overlay on start screen
 btnReset.addEventListener('click', () => {
@@ -92,14 +92,14 @@ qwerty.addEventListener('click', e => {
       overlay.classList.add('win');
       overlay.style.display = 'flex';
       btnReset.innerHTML = 'Play Again';
-      btnReset.addEventListener('click', gameRestart);
+      btnReset.addEventListener('click', window.location.reload());
     } else {
       if (missed >= 5) {
         title.innerHTML = 'Whomp Whomp Whomp sorry you lost.';
         overlay.classList.add('lose');
         overlay.style.display = 'flex';
         btnReset.innerHTML = 'Play Again';
-        btnReset.addEventListener('click', gameRestart);
+        btnReset.addEventListener('click', window.location.reload());
 
       }
     }
