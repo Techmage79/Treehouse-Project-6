@@ -84,7 +84,13 @@ qwerty.addEventListener('click', e => {
       title.innerHTML = 'Winner Winner Winner!';
       overlay.classList.add('win');
       overlay.style.display = 'flex';
-    } 
+    } else {
+      if (missed >= 5) {
+        title.innerHTML = 'Whomp Whomp Whomp sorry you lost.';
+        overlay.classList.add('lose');
+        overlay.style.display = 'flex';
+
+      }
     }
   };
 });
