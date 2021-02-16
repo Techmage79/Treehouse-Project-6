@@ -16,13 +16,7 @@ const phrases = [
 
 const overlay = document.getElementById('overlay');
 
-// // add reset BUTTON
-// function gameRestart() {
-//   getRandomPhrase(phrases);
-//   addPhraseToDisplay(phraseArray);
-//
-//
-// }
+
 
 //Hide overlay on start screen
 btnReset.addEventListener('click', () => {
